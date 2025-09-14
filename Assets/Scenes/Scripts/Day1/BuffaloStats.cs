@@ -22,7 +22,7 @@ public class BuffaloStats : MonoBehaviour
 
     private bool hasTriggered = false;
     private float timer = 0f;
-    private float timeLimit = 45f;
+    private float timeLimit = 55f;
 
     void Awake()
     {
