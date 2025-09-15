@@ -1307,7 +1307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: After harvest, the plant will need to grow again
+  m_Text: After harvesting, the plant will need to regrow
 --- !u!222 &643346455
 CanvasRenderer:
   m_ObjectHideFlags: 0
