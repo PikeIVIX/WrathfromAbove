@@ -101,6 +101,7 @@ public class GodBuffSpam : MonoBehaviour
             if (timer >= enduranceTimer)
             {
                 comboScript.isAttacking = false;
+                comboScript.repeat = false;
                 GlobalPlayer.isFighting = false;
                 Bar.SetActive(false);
                 powerBar.maxValue = maxPower;
@@ -108,8 +109,7 @@ public class GodBuffSpam : MonoBehaviour
                 UpdateThresholdLines();
                 Destroy(activeCloud);
                 animator.SetBool("isAttack", false);
-
-                SceneManager.LoadScene("Day1");
+                timer = 0f;
 
                 if (currentPower <= maxPower / 2)
                 {
@@ -224,7 +224,7 @@ public class GodBuffSpam : MonoBehaviour
         }
     }
 
-    void ChooseNewKey()
+    public void ChooseNewKey()
     {
         char newKey;
         do

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FInishPoint : MonoBehaviour
 {
-    public float restartAfterSeconds = 30f;
+    public float restartAfterSeconds = 60f;
     private float timer = 0f;
 
     void Update()

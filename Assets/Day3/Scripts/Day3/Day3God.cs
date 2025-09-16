@@ -22,7 +22,7 @@ public class Day3God : MonoBehaviour
     void Update()
     {
 
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
             PlaySound(combo);
         }
