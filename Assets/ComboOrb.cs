@@ -23,6 +23,7 @@ public class ComboOrb : MonoBehaviour
     {
 
         GenerateRandomCombo();
+        StartCoroutine(CycleCount());
         //SpawnCombo();
 
     }
@@ -32,13 +33,24 @@ public class ComboOrb : MonoBehaviour
     {
         if (!isAttacking)
         {
+
             if (!repeat)
             {
+                foreach (GameObject obj in tempCombo)
+                {
+                    obj.SetActive(false);
+
+                }
+                deleteCombo();
+
                 GenerateRandomCombo();
+                StartCoroutine(CycleCount());
+
             }
                 
             checkCombo();
-            StartCoroutine(CycleCount());
+            
+
         }
         else
         {
@@ -161,6 +173,8 @@ public class ComboOrb : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
 
+        Debug.Log("yeet");
+
         if (GlobalPlayer.day4threshold >= GlobalPlayer.day4_win_con)
         {
             win_counter += 1;
@@ -172,6 +186,8 @@ public class ComboOrb : MonoBehaviour
             isAttacking = true;
             repeat = false;
             GlobalPlayer.isFighting = true;
+            Debug.Log("Yo");
+            enduranceScript.ChooseNewKey();
         }
     }
 }

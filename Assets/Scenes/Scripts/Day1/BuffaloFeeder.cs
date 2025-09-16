@@ -18,7 +18,7 @@ public class BuffaloFeeder : MonoBehaviour
         if (col) col.isTrigger = true;
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         var corn = other.GetComponent<DraggableCorn>();
         if (corn != null && corn.IsBeingCarried && !corn.consumed)
