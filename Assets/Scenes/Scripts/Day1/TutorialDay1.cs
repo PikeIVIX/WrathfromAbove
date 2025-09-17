@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,30 +6,20 @@ using UnityEngine.Events;
 
 public class TutorialDay1 : MonoBehaviour
 {
-    [Header("UI")]
-    public GameObject tutorialPanel;    
-    public CanvasGroup canvasGroup;      
+    [Header("UI References")]
+    public GameObject tutorialPanel;       // Main tutorial panel
+    public Canvas growthCanvas;            // Canvas for the growth bar
+    public GameObject pressSpaceHint;      // Optional "Press Space" hint text
 
-    [Header("Fade")]
-    public bool useFade = true;
-    public float fadeDuration = 0.6f;
+    [Header("Settings")]
+    public float fadeDuration = 0.4f;      // Fade-out time
+    public float hintDelay = 1f;           // Delay before showing press-space hint
+    public bool useFade = true;            // Toggle fade-out effect
 
-    [Header("Behavior")]
-    public KeyCode startKey = KeyCode.Space;
+    public static bool IsTutorialActive { get; private set; } = true;
 
-    [Header("Events")]
-    public UnityEvent OnTutorialStarted; 
+    private float originalFixedDelta;
 
-    
-    float originalFixedDelta;
-
-    bool started = false;
-    bool waitingForInput = true;
-
-    [Header("Other UI")]
-    public Canvas growthCanvas;
-
-    
     void Awake()
     {
         originalFixedDelta = Time.fixedDeltaTime;
@@ -37,85 +27,86 @@ public class TutorialDay1 : MonoBehaviour
 
     void Start()
     {
-        if (growthCanvas != null)
-            growthCanvas.enabled = false;
-
+        // Show tutorial panel
         if (tutorialPanel != null) tutorialPanel.SetActive(true);
 
-        if (canvasGroup != null)
-        {
-            canvasGroup.alpha = 1f;
-            canvasGroup.interactable = true;
-            canvasGroup.blocksRaycasts = true;
-        }
+        // Hide growth bar during tutorial
+        if (growthCanvas != null) growthCanvas.enabled = false;
 
-        
+        // Hide hint initially
+        if (pressSpaceHint != null) pressSpaceHint.SetActive(false);
+
+        // Pause game
         Time.timeScale = 0f;
         Time.fixedDeltaTime = originalFixedDelta * Time.timeScale;
 
-        started = false;
-        waitingForInput = true;
+        IsTutorialActive = true;
+
+        // Show "Press Space" hint after a delay
+        if (pressSpaceHint != null)
+            StartCoroutine(ShowHintAfterDelay());
     }
 
     void Update()
     {
-        if (!waitingForInput || started) return;
-
-        if (Input.GetKeyDown(startKey))
+        if (IsTutorialActive && Input.GetKeyDown(KeyCode.Space))
         {
-            waitingForInput = false;
-            StartCoroutine(DoStartRoutine());
+            StartCoroutine(EndTutorialRoutine());
         }
     }
 
-    IEnumerator DoStartRoutine()
+    private IEnumerator ShowHintAfterDelay()
     {
-        
-        if (useFade && canvasGroup != null && fadeDuration > 0f)
+        yield return new WaitForSecondsRealtime(hintDelay);
+        if (pressSpaceHint != null && tutorialPanel.activeSelf)
         {
+            pressSpaceHint.SetActive(true);
+        }
+    }
+
+    private IEnumerator EndTutorialRoutine()
+    {
+        // Optional fade-out
+        if (useFade && tutorialPanel != null && fadeDuration > 0f)
+        {
+            CanvasGroup cg = tutorialPanel.GetComponent<CanvasGroup>();
+            if (cg == null)
+            {
+                cg = tutorialPanel.AddComponent<CanvasGroup>();
+                cg.alpha = 1f;
+            }
+
             float t = 0f;
-            float from = canvasGroup.alpha;
             while (t < fadeDuration)
             {
                 t += Time.unscaledDeltaTime;
-                canvasGroup.alpha = Mathf.Lerp(from, 0f, t / fadeDuration);
+                cg.alpha = Mathf.Lerp(1f, 0f, t / fadeDuration);
                 yield return null;
             }
-            canvasGroup.alpha = 0f;
-        }
-        else if (canvasGroup != null)
-        {
-            canvasGroup.alpha = 0f;
         }
 
-        
+        // Hide UI
         if (tutorialPanel != null) tutorialPanel.SetActive(false);
+        if (pressSpaceHint != null) pressSpaceHint.SetActive(false);
 
-        if (growthCanvas != null)
-            growthCanvas.enabled = true;
-
-
-
+        // Resume game
         Time.timeScale = 1f;
         Time.fixedDeltaTime = originalFixedDelta;
+        if (growthCanvas != null) growthCanvas.enabled = true;
 
-        started = true;
-
-      
-
-        OnTutorialStarted?.Invoke();
+        IsTutorialActive = false;
+        Debug.Log("✅ Tutorial finished, gameplay active");
     }
 
     void OnDestroy()
     {
-        
+        // Safety reset if destroyed mid-tutorial
         if (Time.timeScale == 0f)
         {
             Time.timeScale = 1f;
             Time.fixedDeltaTime = originalFixedDelta;
         }
-    }
 
-    
-    public bool HasStarted => started;
+        IsTutorialActive = false;
+    }
 }

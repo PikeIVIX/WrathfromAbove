@@ -24,6 +24,7 @@ public class CornTree : MonoBehaviour
     [Header("Sound")]
     public AudioClip pickupSound;
     private AudioSource audioSource;
+    public TutorialDay1 Day1Tutorial;
 
     void Start()
     {
@@ -42,16 +43,18 @@ public class CornTree : MonoBehaviour
             }
         }
     }
-    
+
     void OnMouseDown()
     {
+        // ✅ Check the static variable using class name
+        if (TutorialDay1.IsTutorialActive) return;
+
         if (isOnCooldown) return;
 
         if (pickupSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(pickupSound);
         }
-
 
         GameObject prefabToSpawn = (Random.value > 0.5f) ? freshCornPrefab : rottenCornPrefab;
         if (prefabToSpawn == null)
@@ -60,13 +63,11 @@ public class CornTree : MonoBehaviour
             return;
         }
 
-        
         Vector3 spawnPos = transform.position + new Vector3(0, 1.5f, 0);
         spawnPos.z = 0f;
         GameObject corn = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
         Debug.Log("Spawned corn: " + corn.name);
 
-        
         var cornSr = corn.GetComponent<SpriteRenderer>();
         if (cornSr != null)
         {
@@ -75,7 +76,6 @@ public class CornTree : MonoBehaviour
             cornSr.color = Color.white;
         }
 
-        
         Collider2D cornCol = corn.GetComponent<Collider2D>();
         if (cornCol != null)
         {
@@ -83,7 +83,6 @@ public class CornTree : MonoBehaviour
             StartCoroutine(EnableColliderNextFrame(cornCol));
         }
 
-        
         if (sr != null && cooldownSprite != null)
         {
             sr.sprite = cooldownSprite;
@@ -91,7 +90,6 @@ public class CornTree : MonoBehaviour
 
         StartCoroutine(CooldownRoutine());
     }
-
     IEnumerator EnableColliderNextFrame(Collider2D col)
     {
         yield return null;
