@@ -16,7 +16,7 @@ public class FInishPoint : MonoBehaviour
      
         if (timer >= restartAfterSeconds)
         {
-            SceneManager.LoadScene("Day3");
+            SceneManager.LoadScene("Day2");
         }
     }
 

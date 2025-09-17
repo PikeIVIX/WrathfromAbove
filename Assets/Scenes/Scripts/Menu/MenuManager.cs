@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
     public GameObject menuUI;
     public void LoadGame()
     {
-        SceneManager.LoadScene("ProlougePhase1");
+        SceneManager.LoadScene("ProloguePhase1");
         Debug.Log("load");
     }
 

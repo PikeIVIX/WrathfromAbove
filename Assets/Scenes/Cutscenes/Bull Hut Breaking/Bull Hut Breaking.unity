@@ -1610,6 +1610,85 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!1 &2046441082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2046441083}
+  - component: {fileID: 2046441085}
+  - component: {fileID: 2046441084}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2046441083
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046441082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 574359797}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -6.8136597, y: -4.1552124}
+  m_SizeDelta: {x: -117.9527, y: -33.6068}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2046441084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046441082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 955205b64fdabd6468b8a852e740c5e4, type: 3}
+    m_FontSize: 36
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &2046441085
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046441082}
+  m_CullTransparentMesh: 1
 --- !u!1 &2076850527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,6 +1765,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1889393018}
     m_Modifications:
+    - target: {fileID: 1547032282494224280, guid: 470188c9fe804c24494e7df0765032db, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6177428802960979650, guid: 470188c9fe804c24494e7df0765032db, type: 3}
       propertyPath: m_Name
       value: DialogueBox
@@ -1775,6 +1858,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8191619834644596352, guid: 470188c9fe804c24494e7df0765032db, type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 9199901368985093231, guid: f5c1a87e426c49d468be2f3a6aed0df8, type: 3}
+    - target: {fileID: 8191619834644596352, guid: 470188c9fe804c24494e7df0765032db, type: 3}
+      propertyPath: textComponent
+      value: 
+      objectReference: {fileID: 2046441084}
+    - target: {fileID: 8191619834644596352, guid: 470188c9fe804c24494e7df0765032db, type: 3}
       propertyPath: lines.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1786,9 +1877,16 @@ PrefabInstance:
       propertyPath: lines.Array.data[3]
       value: yoooo
       objectReference: {fileID: 0}
+    - target: {fileID: 8417108160344575156, guid: 470188c9fe804c24494e7df0765032db, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6424318993950442924, guid: 470188c9fe804c24494e7df0765032db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2046441083}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 470188c9fe804c24494e7df0765032db, type: 3}
 --- !u!1660057539 &9223372036854775807

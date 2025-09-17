@@ -47,7 +47,7 @@ public class BuffaloStats : MonoBehaviour
             if (timer >= timeLimit)
             {
                 hasTriggered = true;
-                LoadNextDay();
+                SceneManager.LoadScene("Day1");
             }
         }
     }
@@ -73,7 +73,7 @@ public class BuffaloStats : MonoBehaviour
     void LoadNextDay()
     {
         Debug.Log("🌱 Buffalo fully grown or time's up! Loading Day 2...");
-        SceneManager.LoadScene("Day2");
+        SceneManager.LoadScene("ProloguePhase2");
     }
 
     

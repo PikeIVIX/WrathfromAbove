@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
+
 
 public class Dialogue : MonoBehaviour
 {
-    public TextMeshProUGUI textComponent;
+    public Text textComponent;
     public string[] lines;
     public float textSpeed;
     public int index = 0;
@@ -49,8 +50,8 @@ public class Dialogue : MonoBehaviour
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
-        yield return new WaitForSeconds(3f);
         dj.Stop();
+        yield return new WaitForSeconds(3f);
         talking = false;
         finishLine = true;
         
