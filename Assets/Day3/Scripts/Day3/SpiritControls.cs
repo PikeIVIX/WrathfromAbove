@@ -17,6 +17,11 @@ public class SpiritControls : MonoBehaviour
     public List<KeyCode> keyCombo = new List<KeyCode>();
     public List<GameObject> tempCombo = new List<GameObject>();
     public GameObject audio;
+<<<<<<< Updated upstream
+=======
+    public GameObject audio2;
+    public GameObject player;
+>>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
@@ -41,11 +46,12 @@ public class SpiritControls : MonoBehaviour
     void OnTriggerEnter2D (Collider2D other)
     {
         Day3God buffsound = audio.GetComponent<Day3God>();
+        BuffaloController buff_player = player.GetComponent<BuffaloController>();
         // Check if the entering GameObject has the "blocker" tag
         if (other.CompareTag("Player"))
         {
             buffsound.BuffaloHurt();
-            GlobalPlayer.day3score -= 20;
+            buff_player.TakeDamage(25);
             Destroy(gameObject);
         }
 

@@ -75,7 +75,7 @@ public class BuffaloController : MonoBehaviour
         if (GlobalPlayer.current_hitpoints <= 0)
         {
             Debug.Log("Player Died!");
-            SceneManager.LoadScene("Day1");
+            SceneManager.LoadScene("Day3");
         }
         Debug.Log(GlobalPlayer.current_hitpoints);
     }
