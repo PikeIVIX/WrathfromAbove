@@ -67,6 +67,7 @@ public class GodBuffSpam : MonoBehaviour
     public GameObject Bar;
     public Animator animator;
 
+
     void Start()
     {
         powerBar.maxValue = maxPower;
@@ -145,15 +146,18 @@ public class GodBuffSpam : MonoBehaviour
 
     void HandleKeyPress()
     {
+
         if (Input.anyKeyDown)
         {
             if (Input.GetKeyDown(currentKey.ToString().ToLower()) ||
                 Input.GetKeyDown(currentKey.ToString().ToUpper()))
             {
+
                 currentPower += gainPerPress;
                 currentPower = Mathf.Clamp(currentPower, 0, maxPower);
                 powerBar.value = currentPower;
             }
+
         }
     }
 

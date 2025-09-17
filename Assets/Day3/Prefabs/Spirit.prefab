@@ -180,8 +180,7 @@ MonoBehaviour:
   ghost: {fileID: 1890270294175733887}
   keyCombo: 
   tempCombo: []
-  audioSource: {fileID: 7732156489857205008}
-  buffaloHurt: {fileID: 8300000, guid: d8d60f5451e0fd843acbe212b39ba0b2, type: 3}
+  audio: {fileID: 0}
 --- !u!95 &-7389385579868675338
 Animator:
   serializedVersion: 5
@@ -213,9 +212,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4567dc9f5802cf644a93837060d9344f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.405
   m_Pitch: 1
   Loop: 0
   Mute: 0
