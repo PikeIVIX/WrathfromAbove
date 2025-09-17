@@ -2214,7 +2214,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: You have 30 seconds
+  m_Text: You have 30 seconds to survive
 --- !u!222 &1075647745
 CanvasRenderer:
   m_ObjectHideFlags: 0
