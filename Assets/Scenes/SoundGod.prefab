@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7080348780642339215}
   - component: {fileID: 1644079057193310971}
+  - component: {fileID: 9147895751723686937}
   - component: {fileID: 2587540889318763212}
   m_Layer: 0
   m_Name: SoundGod
@@ -50,6 +51,23 @@ MonoBehaviour:
   audioSource: {fileID: 2587540889318763212}
   combo: {fileID: 8300000, guid: ff7f0b469d957694bbad7766cfd2d920, type: 3}
   buffaloHurt: {fileID: 8300000, guid: d8d60f5451e0fd843acbe212b39ba0b2, type: 3}
+--- !u!114 &9147895751723686937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9199901368985093231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d43de83610faf4585d38a15fe415ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 2587540889318763212}
+  audioClips:
+  - {fileID: 8300000, guid: 7a57084a185996440bb4bc11c85ad5eb, type: 3}
+  - {fileID: 8300000, guid: f665b6d46c05cfb418c7ade825e092d8, type: 3}
+  index: 0
 --- !u!82 &2587540889318763212
 AudioSource:
   m_ObjectHideFlags: 0

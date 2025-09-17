@@ -13,6 +13,7 @@ public class ComboOrb : MonoBehaviour
     public List<KeyCode> keyCombo = new List<KeyCode>();
     public List<GameObject> tempCombo = new List<GameObject>();
     public GameObject audio;
+    public GameObject audio2;
     public bool isAttacking = false;
     public int win_counter = 0;
     public GodBuffSpam enduranceScript;
@@ -129,6 +130,8 @@ public class ComboOrb : MonoBehaviour
 
     public void checkCombo()
     {
+        audioManager dj = audio2.GetComponent<audioManager>();
+
         if (Input.GetKeyDown(keyCombo[sequenceIndex]))
         {
             tempCombo[sequenceIndex].SetActive(false);
@@ -139,6 +142,8 @@ public class ComboOrb : MonoBehaviour
                 deleteCombo();
                 GlobalPlayer.day4score += 10;
                 GlobalPlayer.day4threshold += 1;
+                dj.PlaySound(0);
+                dj.stop = true;
                 GenerateRandomCombo();
                 sequenceIndex = 0;
 
@@ -151,6 +156,8 @@ public class ComboOrb : MonoBehaviour
             foreach (GameObject obj in tempCombo)
             {
                 obj.SetActive(true);
+                dj.PlaySound(1);
+                dj.stop = true;
             }
         }
     }
