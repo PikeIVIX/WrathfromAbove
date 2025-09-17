@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
+using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    public Text textComponent;
+    public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
     public int index = 0;
@@ -59,16 +58,19 @@ public class Dialogue : MonoBehaviour
 
     public void NextLine()
     {
-        if (index < lines.Length - 1)
+        if (index < lines.Length)
         {
+
             textComponent.text = string.Empty;            
             StartCoroutine(TypeLine());
             index++;
         }
-        //else
-        //{
-        //    gameObject.SetActive(false);
-        //}
+        else
+        {
+            gameObject.SetActive(false);
+            index = 0;
+            ClearDialogue();
+        }
     }
 
     public void ClearDialogue()
@@ -81,15 +83,25 @@ public class Dialogue : MonoBehaviour
     {
         if (line_done)
         {
-            if (textComponent.text == lines[index])
+            if (index >= lines.Length)
             {
-                NextLine();
+                index = 0;
+                ClearDialogue();
+                gameObject.SetActive(false);
             }
             else
             {
-                StopAllCoroutines();
-                textComponent.text = lines[index];
+                if (textComponent.text == lines[index])
+                {
+                    NextLine();
+                }
+                else
+                {
+                    StopAllCoroutines();
+                    textComponent.text = lines[index];
+                }
             }
+            
         }
         
     }

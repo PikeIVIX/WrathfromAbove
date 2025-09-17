@@ -8,6 +8,7 @@ public class SpiritSpawner : MonoBehaviour
     public Transform targetObj;
     public GameObject AudioManager;
     public GameObject AudioDJ;
+    public GameObject buffalo;
     public Vector2 spawnAreaMinOffset; // Minimum offset from specificObject's position
     public Vector2 spawnAreaMaxOffset; // Maximum offset from specificObject's position
     public static bool isSpawning = true;
@@ -66,6 +67,7 @@ public class SpiritSpawner : MonoBehaviour
             movescript.target = targetObj;
             movescript.audio = AudioManager;
             movescript.audio2 = AudioDJ;
+            movescript.player = buffalo;
         }
     }
 
