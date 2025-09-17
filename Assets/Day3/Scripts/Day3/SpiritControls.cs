@@ -17,6 +17,7 @@ public class SpiritControls : MonoBehaviour
     public List<KeyCode> keyCombo = new List<KeyCode>();
     public List<GameObject> tempCombo = new List<GameObject>();
     public GameObject audio;
+    public GameObject audio2;
 
     // Start is called before the first frame update
     void Start()
@@ -119,6 +120,8 @@ public class SpiritControls : MonoBehaviour
 
     public void checkCombo()
     {
+        audioManager dj = audio2.GetComponent<audioManager>();
+
         if (Input.GetKeyDown(keyCombo[sequenceIndex]))
         {
             tempCombo[sequenceIndex].SetActive(false);
@@ -126,8 +129,10 @@ public class SpiritControls : MonoBehaviour
 
             if (sequenceIndex == keyCombo.Count)
             {
-                Destroy(gameObject);
+                dj.PlaySound(0);
+                dj.stop = true;
                 GlobalPlayer.day3score += 10;
+                Destroy(gameObject);
             }
         }
         else if (Input.anyKeyDown && Input.inputString != "") // Check if any key was pressed (and it's not just a modifier key)
