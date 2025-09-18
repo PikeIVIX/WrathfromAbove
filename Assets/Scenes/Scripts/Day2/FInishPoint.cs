@@ -25,7 +25,7 @@ public class FInishPoint : MonoBehaviour
         
         if (other.CompareTag("Player") || other.CompareTag("Buffalo"))
         {
-            SceneManager.LoadScene("Day3");
+            SceneManager.LoadScene("Day3GhostShowdown");
         }
     }
 }

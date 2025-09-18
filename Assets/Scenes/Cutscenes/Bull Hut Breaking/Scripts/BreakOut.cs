@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BreakOut : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class BreakOut : MonoBehaviour
     public float timer = 0f;
     public GameObject audio;
     public bool letGo = false;
+    public bool nextScene = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,10 +44,14 @@ public class BreakOut : MonoBehaviour
 
         }
 
-        if (breakCount >= 10)
+        if (breakCount >= 10 && !nextScene) 
         {
             animator.SetBool("isBroke", true);
             Destroy(button);
+            nextScene = true;
+            Debug.Log("True");
+
+            LoadNextScene(); 
         }
 
         if (timer >= 10)
@@ -62,6 +68,14 @@ public class BreakOut : MonoBehaviour
         }
     }
 
+    public void LoadNextScene()
+    {
+        if (nextScene == true)
+        {
+            StartCoroutine(LoadWait());
+        }
+    }
+
     IEnumerator sweatySmashing()
     {
         audioManager audioPlay = audio.GetComponent<audioManager>();
@@ -74,5 +88,14 @@ public class BreakOut : MonoBehaviour
         {
             dj.Stop();
         }
+    }
+
+    
+
+    IEnumerator LoadWait()
+    {
+        Debug.Log("Loading");
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Day2");
     }
 }

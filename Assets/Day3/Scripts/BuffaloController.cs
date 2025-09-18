@@ -29,7 +29,7 @@ public class BuffaloController : MonoBehaviour
         
         if (GlobalPlayer.day4score >= 300)
         {
-            SceneManager.LoadScene("Day1");
+            SceneManager.LoadScene("GoodEnding");
         }
     }
 
@@ -75,7 +75,7 @@ public class BuffaloController : MonoBehaviour
         if (GlobalPlayer.current_hitpoints <= 0)
         {
             Debug.Log("Player Died!");
-            SceneManager.LoadScene("Day3");
+            SceneManager.LoadScene("BadEnding");
         }
         Debug.Log(GlobalPlayer.current_hitpoints);
     }
