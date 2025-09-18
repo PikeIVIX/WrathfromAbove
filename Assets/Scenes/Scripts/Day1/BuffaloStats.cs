@@ -47,6 +47,7 @@ public class BuffaloStats : MonoBehaviour
             if (timer >= timeLimit)
             {
                 hasTriggered = true;
+                ResetGrowth();
                 SceneManager.LoadScene("Day1");
             }
         }
@@ -66,6 +67,7 @@ public class BuffaloStats : MonoBehaviour
         if (!hasTriggered && currentGrowth >= maxGrowth)
         {
             hasTriggered = true;
+            ResetGrowth();
             LoadNextDay();
         }
     }
